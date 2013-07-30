@@ -1,7 +1,31 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+   $("#preloader").hide();
+  
+  $("#tweet").submit(function(event) {
+    event.preventDefault();  
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    // requires creating js object with value
+    // var tweet_text = ($(this).children().first().val());
+    // var data = {  tweet : tweet_text  }
+    // $.post("/tweet", data, function(){
+
+    // });
+
+    // formats the object into key=val for params
+    var tweet_text = ($(this).children().first().serialize());
+    $('input[type=submit]', this).attr('disabled', 'disabled');
+    $("#preloader").show();
+
+
+
+    $.post("/tweet", tweet_text, function(response){
+      console.log(response);
+     $("#preloader").hide();
+
+      $("#message").html("<h3>"+response+"</h3>");
+
+
+    });
+
+  })
 });

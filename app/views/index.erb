@@ -20,5 +20,18 @@
   <% else %>
     <button><a href="/sign_in">Sign In with Twitter</a></button>
   <% end %>
+
+  <div id="message">
+</div>
+
+<form action="/tweet" method="post" id="tweet">
+  <input id="tweet-text" type="text" name="tweet" placeholder="Tweet it, bro"><br>
+  <input type="submit" value="Tweet Now">
+</form>
+
+<div id="preloader">
+  <p>Your Tweet is Processing</p>
+  <img src="ajax-loader.gif">
+</div>
   
 </div>

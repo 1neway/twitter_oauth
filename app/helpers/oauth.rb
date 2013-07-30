@@ -7,6 +7,7 @@ def oauth_consumer
   )
 end
 
+# sets session[:request_token]
 def request_token
   if not session[:request_token]
     # this 'host_and_port' logic allows our app to work both locally and on Heroku
@@ -14,6 +15,8 @@ def request_token
     host_and_port << ":9393" if request.host == "localhost"
 
     # the `oauth_consumer` method is defined above
+
+    # what does get_request_token do?
     session[:request_token] = oauth_consumer.get_request_token(
       :oauth_callback => "http://#{host_and_port}/auth"
     )
