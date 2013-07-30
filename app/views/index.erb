@@ -14,17 +14,17 @@
         <strong>secret:</strong> <%= @access_token.secret %><br>
       </p>
       <p>
-        <button><a href="http://vast-castle-7986.herokuapp.com/sign_out">Sign Out</a></button>
+        <button><a href="/sign_out">Sign Out</a></button>
       </p>
     </div>
   <% else %>
-    <button><a href="http://vast-castle-7986.herokuapp.com/sign_in">Sign In with Twitter</a></button>
+    <button><a href="/sign_in">Sign In with Twitter</a></button>
   <% end %>
 
   <div id="message">
 </div>
 
-<form action="http://vast-castle-7986.herokuapp.com/tweet" method="post" id="tweet">
+<form action="/tweet" method="post" id="tweet">
   <input id="tweet-text" type="text" name="tweet" placeholder="Tweet it, bro"><br>
   <input type="submit" value="Tweet Now">
 </form>
