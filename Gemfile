@@ -21,7 +21,6 @@ gem 'shotgun'
 gem 'oauth'
 gem 'twitter'
 
-#sidekiq
 
 gem 'sidekiq'
 gem 'redis'
