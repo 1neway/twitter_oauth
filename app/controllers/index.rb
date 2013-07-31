@@ -39,16 +39,20 @@ get '/auth' do
 end
 
 post '/tweet' do
+
+  @tweet = Tweet.create(text: params[:tweet], user: current_user)
   
   if request.xhr?
     begin
-      current_user.twitter_client.update(params[:tweet])
+      twitter_worker = TweetWorker.new
+      twitter_worker.perform(@tweet.id)
+      # current_user.twitter_client.update(params[:tweet])
     rescue Exception => e 
       return e.message
     end
     "success"  
   else
-    current_user.twitter_client.update(params[:tweet])
+    # current_user.twitter_client.update(params[:tweet])
     redirect to '/'
   end
 
