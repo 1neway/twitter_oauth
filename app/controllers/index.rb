@@ -39,7 +39,8 @@ end
 
 post '/tweet' do
   if request.xhr?
-      @job_id = {"job_id" => current_user.tweet(params[:tweet])}
+      p params
+      @job_id = {"job_id" => current_user.tweet_in(params[:tweet], params[:time])}
       content_type :json
       @job_id.to_json
   else
